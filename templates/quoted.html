@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    quoted
+{% endblock %}
+
+{% block main %}
+    <p style="font-weight: 400">A share off {{ name }}&#40;{{ symbol }}&#41; costs {{ price | usd}}</p>
+{% endblock %}

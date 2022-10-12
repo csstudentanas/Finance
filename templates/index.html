@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Symbol</th>
+            <th scope="col">Name</th>
+            <th scope="col">Shares</th>
+            <th scope="col">Price</th>
+            <th scope="col">Total</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for row in rows %}
+                <tr>
+                    <th scope="row">{{ row["symbol"]  }}</th>
+                    <td>{{  row["name"] }}</td>
+                    <td>{{ row["shares"]  }}</td>
+                    <td>{{ row["price" ] | usd }}</td>
+                    <td>{{ row["total"] | usd}}</td>
+                </tr>
+            {% endfor  %}
+            <tr>
+                <th scope="row">Cash</th>
+
+                {% if   final_cash   == Null %}
+                    <td colspan="4"><strong> {{10000 | usd }}</strong></td>
+                {% else %}
+                    <td colspan="4"><strong>{{ final_cash | usd }}</strong></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <th scope="row">Holdings</th>
+                <td colspan="4"><strong> {{10000 | usd }}</strong></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+{% endblock %}
